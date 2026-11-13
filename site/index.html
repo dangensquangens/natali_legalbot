@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LegalBot — вопросы по цифровому праву</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./config.js" defer></script>
+  <script src="./chat.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <h1>LegalBot</h1>
+      <p>Вопросы по цифровому праву России</p>
+    </header>
+    <div id="conversation" class="conversation" role="log" aria-label="Чат">
+      <article class="message bot">
+        <p>Опишите ситуацию своими словами. Я подберу справку и покажу, где проверить её по источникам.</p>
+      </article>
+    </div>
+    <details class="examples">
+      <summary>Темы и примеры вопросов</summary>
+      <div id="topics">Загружаем темы…</div>
+    </details>
+    <form id="question-form">
+      <label for="question" class="sr-only">Ваш вопрос</label>
+      <div class="composer">
+        <textarea id="question" rows="2" minlength="3" maxlength="1200" required placeholder="Что произошло?"></textarea>
+        <button id="send">Отправить</button>
+      </div>
+      <p class="note">Учебный справочный сервис. Уберите из вопроса имена, контакты и реквизиты документов.</p>
+    </form>
+  </main>
+</body>
+</html>
