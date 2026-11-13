@@ -38,6 +38,24 @@ function addLinks(container, title, entries) {
   container.append(list);
 }
 
+function addLegalNorms(container, norms) {
+  const section = element("section", "", "legal-norms");
+  section.append(element("h3", "Правовая норма"));
+  for (const norm of norms) {
+    const disclosure = element("details");
+    const summary = element("summary", norm.title);
+    const quote = element("blockquote", norm.text);
+    quote.setAttribute("cite", norm.url);
+    const link = element("a", "Открыть статью в источнике");
+    link.href = norm.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    disclosure.append(summary, link, quote);
+    section.append(disclosure);
+  }
+  container.append(section);
+}
+
 function choiceButton(choice, useTitle = false) {
   const button = element("button", useTitle ? choice.title : choice.example, "choice");
   button.type = "button";
@@ -94,11 +112,10 @@ async function ask(text, payload) {
       reply.replaceChildren(
         element("p", card.topic, "category"),
         element("h2", card.title),
-        element("p", card.answer)
+        ...card.answer.split("\n\n").map((paragraph) => element("p", paragraph, "answer"))
       );
-      addLinks(reply, "Правовая норма", card.sources);
+      addLegalNorms(reply, card.sources);
       addLinks(reply, "Пояснения ведомств", card.explanations);
-      addLinks(reply, "Судебная практика", card.cases);
     } else {
       reply.replaceChildren(element("p", result.message));
       for (const choice of result.choices || []) reply.append(choiceButton(choice, true));

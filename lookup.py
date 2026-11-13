@@ -13,17 +13,23 @@ class Source:
 
 
 @dataclass(frozen=True)
+class LegalNorm:
+    title: str
+    url: str
+    text: str
+
+
+@dataclass(frozen=True)
 class Card:
     id: str
     topic: str
     title: str
     example: str
     answer: str
-    sources: tuple[Source, ...]
+    sources: tuple[LegalNorm, ...]
     # Правило срабатывает, если совпало хотя бы одно выражение в каждой группе.
     rules: tuple[tuple[tuple[str, ...], ...], ...]
     explanations: tuple[Source, ...] = ()
-    cases: tuple[Source, ...] = ()
 
 
 def _words(text: str) -> tuple[str, ...]:
