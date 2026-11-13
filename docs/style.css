@@ -27,7 +27,7 @@ button, summary { cursor: pointer; }
 .message.user { background: #e3ede8; justify-self: end; white-space: pre-wrap; }
 .message h2 { font-size: 1.15rem; margin: 3px 0 8px; line-height: 1.3; }
 .message h3 { font-size: 0.96rem; margin: 14px 0 3px; }
-.category, .note { color: var(--muted); font-size: 0.86rem; }
+.category { color: var(--muted); font-size: 0.86rem; }
 .sources { margin: 0; padding-inline-start: 20px; }
 .sources li + li { margin-top: 5px; }
 .sources li p { color: var(--muted); }
@@ -48,7 +48,6 @@ textarea { resize: vertical; }
 button { padding: 8px 14px; border: 1px solid transparent; border-radius: 8px; background: var(--accent); color: #fff; font-weight: 600; }
 button:disabled { opacity: 0.55; cursor: wait; }
 .choice { display: block; margin: 6px 0 0; text-align: left; color: var(--accent); background: #f0f5f0; border-color: var(--border); font-weight: 500; }
-.note { margin: 8px 0 0; }
 .stats-form label { display: block; margin-bottom: 4px; }
 #stats section { border-top: 1px solid var(--border); margin-top: 14px; }
 #stats h2 { font-size: 1.1rem; margin-bottom: 8px; }
