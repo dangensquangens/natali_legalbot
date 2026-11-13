@@ -4,7 +4,6 @@ const form = document.querySelector("#question-form");
 const question = document.querySelector("#question");
 const send = document.querySelector("#send");
 const topics = document.querySelector("#topics");
-const examples = document.querySelector(".examples");
 let busy = false;
 
 function element(tag, text, className) {
@@ -61,7 +60,7 @@ function choiceButton(choice, useTitle = false) {
   button.type = "button";
   button.addEventListener("click", async () => {
     if (busy) return;
-    examples.open = false;
+    question.focus({preventScroll: true});
     await ask(choice.example, {card_id: choice.id});
   });
   return button;
@@ -80,7 +79,9 @@ async function loadCatalog() {
       topics.append(group);
     }
   } catch {
-    topics.textContent = "Список тем пока недоступен.";
+    topics.textContent = "Не удалось загрузить темы. Обновите страницу, чтобы повторить попытку.";
+  } finally {
+    topics.setAttribute("aria-busy", "false");
   }
 }
 
@@ -129,7 +130,11 @@ async function ask(text, payload) {
   } finally {
     busy = false;
     send.disabled = false;
-    reply.scrollIntoView({block: "nearest"});
+    const chatBounds = conversation.getBoundingClientRect();
+    conversation.scrollTop += reply.getBoundingClientRect().top - chatBounds.top - 8;
+    if (chatBounds.top < 0 || chatBounds.top > innerHeight - 100) {
+      conversation.scrollIntoView({block: "nearest"});
+    }
   }
   return !failed;
 }

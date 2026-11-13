@@ -4,33 +4,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LegalBot — вопросы по цифровому праву</title>
+  <meta name="description" content="Справочный чат по цифровому праву России. Найдите ответ, прочитайте текст статьи и пояснения ведомств.">
+  <meta name="theme-color" content="#f7f6fb">
+  <meta property="og:title" content="LegalBot — вопросы по цифровому праву">
+  <meta property="og:description" content="Ответы на вопросы о персональных данных, покупках в интернете, электронной подписи и других темах цифрового права.">
+  <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAEkUlEQVR42u1baUxcVRT+3nvMxjAMMx2GpcjQypACQ0npFCoROm2aGlITY+qSGE1cErdKtImJNm6FuPzSWKPypxp/mKYpNE0qEYvWBSTSgjRQERIYytJhGZZxgGG292b8oYkZ3huYljL23Xn357n35r7z3XPPOffc91G4hfbQ3nNh3IGtqfMIdbNzKLErvVEwKNIUv1kgaJKVj0UHilTFY7UGOlGUj6YbjQRvdKLsfjQd6URSXkhX6Qgk2u6vtgLJAhIdACoRzV+yAAkACQAJAAkACYB/WlK8F9y+Iw37akwoKNEjI0uNZI0MbIDDXwt+jNsX0dc1g98uOeB2+cnKA1LTFHj2tV2osGWvO5YNhlBX247B3nkyLECTJkd9QzW25mli+ygZDXWKjBwf8PSx0piVJ84HaHUKVB7M4cn9Pg5dbZOYcXiQkipHQYke2wrSyAPAXKwHTfNrrx+9eRk9HdMRsjyzFo8ftaC0IoMcAJI1wmfZMbrEk40OufHuKx049OA2BPwhMnyAe0E4nD3yTCEoWvjNovX8dVzrdpIBwGDfPAJ+jievrsnFB6ds2Flu/F+dIFOU8+iJzVyAY0NQqpJQWGrg9enTVdhXkwvrvVkI+DncGF1COBQmCwAAGOidR2m5EVuMKsF+nUGJCls29h82wbvCYnTIDYQJugvsqcpCnlm77rgtGSo8f7wMJz6tglavIAOA/EIdXq7bA5mc4aW70VrRLgPqG6qRkioXPwCPvVgMJilymeYzw3jyvmZ8/t7vGLcvCs7LztXgqWM7xQ2AKjkJlt2RXj4Y4HC6oR9+L4ufmsfw6hM/4OTbXVhyB3jzqw7dtelHYVMB0BlUoFaF+mAgBDb4X1gMh4Ffv59AfW07LwJQNIX8Qp14AXC7fPzMMEWGew7kCGaBE9f52SHD0OIFwLMUFEx5j761Gwfuz4vcbQrQaPlOzznlEbcTvHB6iCeTKxi88EYZ3j9lQ1llJigKsB02QWdQRoybcXgwNuwW92Xox29GUVaZKVgJMhfrcfzDSjgnPUjPTOb1n/1iAOEwAYnQyXe60PbdeNR+Y7aadzH69qwdbS3jZKTCIS6MK79MYvrGMvKL9EhWr13uavpyEF9/9gd5ZfH2ixOofbgVX33ch4VZb9Rx5bZsKJQMOZeh1dYw1L+AlsYROKc82L5Dx7MIrU4Blg3jz6tz5D6McGzo30zwkmA6HEv5XBQAPPd6GSzW9Kj9y4sBtJ4f4cnjcRGKSxg05afi4ANVuNbtRPOZYfR2zoDjImObULHENe8j62msxGpEidUIz3IQA1fnMDu9AoahYLYIl8P7rjjJfBtUp8hgrcpac4zXE8TFcyOJ+TrMBkP4pK57zTApKgD6e+bAsbHV+B1jS6h7qR3d7VNxA5wCNv9HSZ1Bib37t8JiTYfpbi20egXkCga+FRYLs14MD7hw+edJ9HRMIxTHqnBT5xEqLj7ANedDS6MdLY12SH+I3IkA3ArbCoSwRyQL2AjnjgTuEL1R4qHYiVPSEbgd9FMx0+Yo0omT620qfbvJyGKjzkrkaSQ4ff5v3GCj+gIsS34AAAAASUVORK5CYII=">
   <link rel="stylesheet" href="./style.css">
   <script src="./config.js" defer></script>
   <script src="./local.js" defer></script>
   <script src="./chat.js" defer></script>
 </head>
 <body>
-  <main class="shell">
-    <header class="header">
-      <h1>LegalBot</h1>
-      <p>Вопросы по цифровому праву России</p>
-    </header>
-    <div id="conversation" class="conversation" role="log" aria-label="Чат">
-      <article class="message bot">
-        <p>Опишите ситуацию своими словами. Я подберу справку и покажу, где проверить её по источникам.</p>
-      </article>
+  <a class="skip-link" href="#question">Перейти к вопросу</a>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <a class="brand" href="./" aria-current="page"><span class="brand-mark" aria-hidden="true">§</span>LegalBot</a>
     </div>
-    <details class="examples">
-      <summary>Темы и примеры вопросов</summary>
-      <div id="topics">Загружаем темы…</div>
-    </details>
-    <form id="question-form">
-      <label for="question" class="sr-only">Ваш вопрос</label>
-      <div class="composer">
-        <textarea id="question" rows="2" minlength="3" maxlength="1200" required placeholder="Что произошло?"></textarea>
-        <button id="send">Отправить</button>
+  </header>
+  <main class="workspace">
+    <header class="intro">
+      <h1>Вопросы по цифровому праву</h1>
+      <p>Нормы российского права и пояснения ведомств.</p>
+    </header>
+    <section class="chat" aria-labelledby="chat-title">
+      <header class="chat-header">
+        <h2 id="chat-title">Чат</h2>
+      </header>
+      <div id="conversation" class="conversation" role="log" aria-label="Диалог">
+        <article class="message bot greeting">
+          <p>Опишите ситуацию своими словами или выберите пример вопроса.</p>
+        </article>
       </div>
-    </form>
+      <form id="question-form">
+        <label for="question" class="sr-only">Ваш вопрос</label>
+        <div class="composer">
+          <textarea id="question" rows="2" minlength="3" maxlength="1200" required placeholder="Что произошло?"></textarea>
+          <button id="send">Отправить <span aria-hidden="true">↑</span></button>
+        </div>
+      </form>
+    </section>
+    <aside class="topic-panel" aria-label="Темы и примеры вопросов">
+      <h2>Темы и примеры</h2>
+      <div id="topics" aria-busy="true">
+        <span class="sr-only">Загружаем темы</span>
+        <div class="topic-skeleton" aria-hidden="true"></div>
+        <div class="topic-skeleton" aria-hidden="true"></div>
+        <div class="topic-skeleton" aria-hidden="true"></div>
+      </div>
+    </aside>
   </main>
 </body>
 </html>
