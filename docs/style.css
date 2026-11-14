@@ -104,7 +104,7 @@ h1, h2, h3 { text-wrap: balance; }
   box-shadow: 0 8px 24px rgb(49 34 81 / 5%);
   min-width: 0;
 }
-.chat { padding: 16px; }
+.chat { padding: 24px; }
 .chat-header, .topic-panel > h2 { margin-bottom: 12px; }
 .chat-header h2, .topic-panel > h2 {
   font-size: 1.25rem;
@@ -114,20 +114,13 @@ h1, h2, h3 { text-wrap: balance; }
 .chat-header h2 { margin: 0; }
 .conversation {
   display: grid;
-  gap: 12px;
-  align-content: start;
-  min-height: 256px;
-  max-height: min(52vh, 576px);
-  overflow: auto;
-  padding: 16px;
-  border-radius: 8px;
-  background: var(--panel);
-  scrollbar-color: #a79bbf var(--panel);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
 }
 .message {
   min-width: 0;
-  padding: 12px;
   overflow-wrap: anywhere;
+  scroll-margin-block-start: 24px;
   animation: message-in 500ms var(--motion) both;
 }
 @keyframes message-in {
@@ -138,14 +131,18 @@ h1, h2, h3 { text-wrap: balance; }
 .message .answer { max-width: 65ch; }
 .message .answer + .answer { margin-top: 12px; }
 .message.bot {
-  background: var(--paper);
+  padding: 16px;
+  background: var(--panel);
   border: 1px solid var(--border);
-  justify-self: start;
-  border-radius: 12px;
+  border-radius: 16px;
 }
-.message.bot:not(.greeting) { width: 100%; }
+.message.greeting {
+  color: var(--muted);
+  background: var(--paper);
+}
 .message.user {
   max-width: 88%;
+  padding: 8px 16px;
   background: var(--accent-soft);
   color: #31204e;
   justify-self: end;
@@ -199,8 +196,20 @@ summary:hover, a:hover { color: var(--accent-hover); }
   background: var(--panel);
 }
 .topic-skeleton + .topic-skeleton { margin-top: 8px; }
-.chat form { margin-top: 16px; }
+.chat form {
+  position: sticky;
+  z-index: 1;
+  bottom: 8px;
+  margin-top: 16px;
+}
 .composer { display: flex; align-items: stretch; gap: 8px; }
+.chat .composer {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--paper);
+  box-shadow: 0 4px 16px rgb(49 34 81 / 9%);
+}
 textarea, input {
   min-width: 0;
   flex: 1;
@@ -211,6 +220,10 @@ textarea, input {
   background: var(--paper);
 }
 textarea { resize: vertical; }
+.chat textarea {
+  border-color: transparent;
+  background: var(--panel);
+}
 textarea::placeholder { color: var(--muted); }
 button {
   padding: 8px 12px;
@@ -274,11 +287,10 @@ meter { width: 100%; }
 @media (max-width: 480px) {
   .workspace { gap: 16px; }
   .chat, .topic-panel { padding: 12px; border-radius: 16px; }
-  .conversation { padding: 8px; border-radius: 4px; min-height: 192px; max-height: 48vh; }
+  .conversation { gap: 12px; }
+  .message.bot { padding: 12px; border-radius: 12px; }
   .message.user { max-width: 95%; }
-  .composer { flex-wrap: wrap; }
-  .composer > textarea { flex-basis: 100%; }
-  #send { width: 100%; }
+  #send span { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }

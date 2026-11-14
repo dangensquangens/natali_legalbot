@@ -130,10 +130,10 @@ async function ask(text, payload) {
   } finally {
     busy = false;
     send.disabled = false;
-    const chatBounds = conversation.getBoundingClientRect();
-    conversation.scrollTop += reply.getBoundingClientRect().top - chatBounds.top - 8;
-    if (chatBounds.top < 0 || chatBounds.top > innerHeight - 100) {
-      conversation.scrollIntoView({block: "nearest"});
+    const replyTop = reply.getBoundingClientRect().top;
+    const visibleBottom = Math.min(innerHeight, form.getBoundingClientRect().top);
+    if (replyTop < 0 || replyTop > visibleBottom - 80) {
+      reply.scrollIntoView({block: "start"});
     }
   }
   return !failed;
