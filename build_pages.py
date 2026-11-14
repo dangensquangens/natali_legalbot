@@ -1,4 +1,3 @@
-"""Собирает браузерную версию LegalBot в папку docs для GitHub Pages."""
 
 import json
 import shutil

@@ -1,4 +1,3 @@
-"""Подбор правовых карточек по словам и фразам из вопроса."""
 
 import re
 from collections.abc import Sequence
@@ -27,7 +26,6 @@ class Card:
     example: str
     answer: str
     sources: tuple[LegalNorm, ...]
-    # Правило срабатывает, если совпало хотя бы одно выражение в каждой группе.
     rules: tuple[tuple[tuple[str, ...], ...], ...]
     explanations: tuple[Source, ...] = ()
 
@@ -52,7 +50,6 @@ def _matches(question: tuple[str, ...], expression: str) -> bool:
 
 
 def find_cards(question: str, cards: Sequence[Card]) -> tuple[Card, ...]:
-    """Возвращает самые подходящие карточки. При равенстве нужен выбор пользователя."""
     words = tuple(word.rstrip("*") for word in _words(question))
     best_score = 0
     matches = []

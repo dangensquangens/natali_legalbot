@@ -1,4 +1,3 @@
-"""Сервер чата LegalBot и закрытой статистики."""
 
 import argparse
 import json
@@ -135,7 +134,6 @@ def read_payload(environ):
 
 
 def create_app(db_path=None, admin_password=None, pages_origin=None):
-    """Точка входа WSGI для размещения на Python-хостинге."""
     path = Path(db_path or os.environ.get("LEGALBOT_DB", ROOT / "data" / "statistics.sqlite3"))
     password = (admin_password or os.environ.get("LEGALBOT_ADMIN_PASSWORD", "")).encode("utf-8")
     origin = (pages_origin or os.environ.get("LEGALBOT_PAGES_ORIGIN", "")).rstrip("/")

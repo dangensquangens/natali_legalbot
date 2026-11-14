@@ -1,4 +1,3 @@
-"""Справочные карточки по российскому цифровому праву."""
 
 import json
 from pathlib import Path
@@ -31,7 +30,6 @@ def law(key: str) -> LegalNorm:
 
 
 def rule(*groups: str) -> tuple[tuple[str, ...], ...]:
-    """В каждой группе знак | разделяет равнозначные выражения, * обозначает начало слова."""
     return tuple(tuple(group.split("|")) for group in groups)
 
 
