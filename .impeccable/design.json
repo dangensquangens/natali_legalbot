@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-24T20:01:28.249984+00:00",
+  "title": "Дизайн LegalBot",
+  "extensions": {
+    "typographyMeta": {
+      "display": {
+        "displayName": "Заголовок",
+        "purpose": "Заголовки страниц."
+      },
+      "body": {
+        "displayName": "Основной текст",
+        "purpose": "Текст интерфейса и ответов."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "topic-arrow",
+        "value": "transform 180ms ease-out",
+        "purpose": "Поворот стрелки раздела с учётом настройки сниженного движения."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "single-column",
+        "value": "760px"
+      },
+      {
+        "name": "compact",
+        "value": "480px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Основная кнопка",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Основное действие.",
+      "html": "<button class=\"ds-button\">Отправить</button>",
+      "css": ".ds-button{min-height:44px;padding:10px 18px;border:1px solid transparent;border-radius:8px;background:#174b67;color:#fff;font:650 1rem \"Segoe UI\",sans-serif}.ds-button:hover{background:#103749}.ds-button:focus-visible{outline:2px solid #174b67;outline-offset:3px}.ds-button:disabled{background:#e0edf1;color:#174b67}"
+    },
+    {
+      "name": "Поле ввода",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Ввод вопроса или пароля.",
+      "html": "<label class=\"ds-label\">Ваш вопрос<textarea class=\"ds-input\" placeholder=\"Опишите ситуацию\"></textarea></label>",
+      "css": ".ds-label{display:block;font:650 1.125rem \"Segoe UI\",sans-serif}.ds-input{display:block;box-sizing:border-box;width:100%;min-height:104px;margin-top:10px;padding:12px 14px;border:1px solid #879c9d;border-radius:8px;background:#f8faf9;color:#152e3d;font:1rem \"Segoe UI\",sans-serif;resize:vertical}.ds-input:focus-visible{outline:2px solid #174b67;outline-offset:3px}"
+    },
+    {
+      "name": "Панель тем",
+      "kind": "custom",
+      "description": "Раскрываемые темы и примеры.",
+      "html": "<div class=\"ds-rail\"><details class=\"ds-topic\"><summary>Персональные данные</summary><button class=\"ds-choice\">Пример вопроса</button></details></div>",
+      "css": ".ds-rail{padding:18px;background:#183849;color:#f1f6f5;border-radius:14px;font:650 .9375rem \"Segoe UI\",sans-serif}.ds-topic{border-top:1px solid #537081}.ds-topic summary{cursor:pointer;min-height:44px;padding:10px 8px;box-sizing:border-box}.ds-topic summary:hover,.ds-topic[open]{background:#244b5c}.ds-topic[open] summary{color:#f1d286}.ds-topic :focus-visible{outline:2px solid #f1d286;outline-offset:3px}.ds-choice{padding:9px 10px;border:1px solid transparent;background:transparent;color:#f1f6f5;font:500 .875rem \"Segoe UI\",sans-serif}.ds-choice:hover{background:#183849;border-color:#537081}"
+    },
+    {
+      "name": "Ответ",
+      "kind": "card",
+      "description": "Контейнер ответа.",
+      "html": "<article class=\"ds-answer\"><h2>Ответ</h2><p>Разъяснение по вопросу.</p></article>",
+      "css": ".ds-answer{padding:clamp(16px,3vw,28px);border:1px solid #c7d2d1;border-radius:14px;background:#fff;color:#152e3d;font:1rem/1.55 \"Segoe UI\",sans-serif}.ds-answer h2{margin:4px 0 12px;font-size:1.25rem}"
+    },
+    {
+      "name": "Ссылка возврата",
+      "kind": "nav",
+      "description": "Возврат к чату.",
+      "html": "<a class=\"ds-back\" href=\"#\">Вернуться в чат</a>",
+      "css": ".ds-back{color:#174b67;font:650 1rem \"Segoe UI\",sans-serif;text-underline-offset:.2em}.ds-back:hover{color:#103749}.ds-back:focus-visible{outline:2px solid #174b67;outline-offset:3px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Спокойный правовой справочник",
+    "overview": "Страница открывается заголовком и формой вопроса. Светлая рабочая область отделяет ввод и ответы от тёмного указателя тем.",
+    "keyCharacteristics": [
+      "Светлые поверхности и тёмная панель тем.",
+      "Книжный заголовок и читаемый системный текст.",
+      "Ясные состояния управления и видимый фокус."
+    ],
+    "rules": [],
+    "dos": [
+      "Сохраняйте видимый фокус и подписи полей.",
+      "Обеспечивайте перенос длинных названий и адаптацию на узком экране."
+    ],
+    "donts": [
+      "Оставляйте заголовок и поле вопроса в верхней части страницы."
+    ]
+  }
+}

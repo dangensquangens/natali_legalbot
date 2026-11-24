@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parent
 def main():
     output = ROOT / "docs"
     output.mkdir(exist_ok=True)
-    for filename in ("style.css", "chat.js", "config.js"):
+    for filename in ("style.css", "chat.js", "config.js", "pt-serif-regular.ttf", "pt-serif-ofl.txt"):
         shutil.copyfile(ROOT / "site" / filename, output / filename)
     shutil.copyfile(ROOT / "pages" / "local.js", output / "local.js")
     index = (ROOT / "site" / "index.html").read_text(encoding="utf-8")
