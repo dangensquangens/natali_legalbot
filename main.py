@@ -23,6 +23,7 @@ STATIC = {
     "/index.html": ("index.html", "text/html; charset=utf-8"),
     "/admin.html": ("admin.html", "text/html; charset=utf-8"),
     "/style.css": ("style.css", "text/css; charset=utf-8"),
+    "/pt-serif-regular.ttf": ("pt-serif-regular.ttf", "font/ttf"),
     "/config.js": ("config.js", "text/javascript; charset=utf-8"),
     "/chat.js": ("chat.js", "text/javascript; charset=utf-8"),
     "/admin.js": ("admin.js", "text/javascript; charset=utf-8"),
