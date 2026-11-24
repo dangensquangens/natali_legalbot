@@ -131,7 +131,8 @@ async function ask(text, payload) {
     busy = false;
     send.disabled = false;
     const replyTop = reply.getBoundingClientRect().top;
-    if (replyTop < 0 || replyTop > innerHeight - 80) {
+    const visibleBottom = Math.min(innerHeight, form.getBoundingClientRect().top);
+    if (replyTop < 0 || replyTop > visibleBottom - 80) {
       reply.scrollIntoView({block: "start"});
     }
   }
